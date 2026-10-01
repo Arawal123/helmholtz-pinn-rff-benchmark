@@ -1,0 +1,14 @@
+n   method   seed  status                       logged_update
+6   vanilla  0     completed                    8000/8000
+6   vanilla  1     completed                    8000/8000
+6   vanilla  2     completed                    8000/8000
+6   rff      0     completed                    8000/8000
+6   rff      1     completed                    8000/8000
+6   rff      2     completed                    8000/8000
+12  vanilla  0     completed                    8000/8000
+12  vanilla  1     completed                    8000/8000
+12  vanilla  2     completed                    8000/8000
+12  rff      0     completed                    8000/8000
+12  rff      1     completed                    8000/8000
+12  rff      2     completed                    8000/8000
+Terminal training slots: 12/12

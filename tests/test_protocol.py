@@ -98,10 +98,11 @@ def test_attempts_overwrite_safe_and_pairing(tmp_path):
     assert next(x for x in effects if x["n"] == 12)["status"] == "unavailable_failure_or_pending"
 
 
-def test_pending_report_when_no_results():
-    from scripts.aggregate_results import make_report
-    make_report([], [], [])
-    report = Path(__file__).resolve().parents[1] / "report/methods_results.md"
+def test_pending_report_when_no_results(tmp_path, monkeypatch):
+    from scripts import aggregate_results
+    monkeypatch.setattr(aggregate_results, "ROOT", tmp_path)
+    aggregate_results.make_report([], [], [])
+    report = tmp_path / "report/methods_results.md"
     assert "PENDING PROTECTED RUN" in report.read_text(encoding="utf-8")
 
 

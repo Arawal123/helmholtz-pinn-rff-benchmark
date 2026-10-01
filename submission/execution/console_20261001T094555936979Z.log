@@ -1,0 +1,14 @@
+n   method   seed  status                       logged_update
+6   vanilla  0     not_started                  0/8000
+6   vanilla  1     not_started                  0/8000
+6   vanilla  2     not_started                  0/8000
+6   rff      0     not_started                  0/8000
+6   rff      1     not_started                  0/8000
+6   rff      2     not_started                  0/8000
+12  vanilla  0     not_started                  0/8000
+12  vanilla  1     not_started                  0/8000
+12  vanilla  2     not_started                  0/8000
+12  rff      0     not_started                  0/8000
+12  rff      1     not_started                  0/8000
+12  rff      2     not_started                  0/8000
+Terminal training slots: 0/12

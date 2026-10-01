@@ -1,0 +1,58 @@
+{
+  "source": "Execution-status text supplied by the experimenter; earlier raw files were not supplied for this review",
+  "scientific_git_sha": "3258b1d47baa734fea102d7f8ea38fdd626d8174",
+  "primary_runs": [
+    {
+      "n": 6,
+      "method": "vanilla",
+      "seed": 0,
+      "status": "completed",
+      "updates_completed": 8000
+    },
+    {
+      "n": 6,
+      "method": "vanilla",
+      "seed": 1,
+      "status": "completed",
+      "updates_completed": 8000
+    },
+    {
+      "n": 6,
+      "method": "vanilla",
+      "seed": 2,
+      "status": "completed",
+      "updates_completed": 8000
+    },
+    {
+      "n": 6,
+      "method": "rff",
+      "seed": 0,
+      "status": "completed",
+      "updates_completed": 8000
+    },
+    {
+      "n": 6,
+      "method": "rff",
+      "seed": 1,
+      "status": "completed",
+      "updates_completed": 8000
+    },
+    {
+      "n": 6,
+      "method": "rff",
+      "seed": 2,
+      "status": "completed",
+      "updates_completed": 8000
+    }
+  ],
+  "stress_record": {
+    "n": 12,
+    "method": "vanilla",
+    "seed": 0,
+    "status": "running",
+    "recorded_updates_completed": 0,
+    "note": "The field can be stale; actual progress and final status are not established"
+  },
+  "separate_restart_approval": "The experimenter confirmed no separate approval from Ryan",
+  "reviewer_disposition": "Not provided"
+}

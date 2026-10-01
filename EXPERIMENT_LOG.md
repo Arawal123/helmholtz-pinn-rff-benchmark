@@ -1,42 +1,54 @@
-# Experiment log — append-only record
+# Experiment log
 
-## Frozen hypothesis and approval
+## Hypothesis and frozen design
 
-RFF input features should mitigate vanilla tanh PINN spectral bias for the primary `n=6` Helmholtz manufactured solution. `n=12` is a preregistered stress/failure check. Ryan's later approval freezes bandwidth, widths, optimizer, points, scaling, seeds, and step budget. Negative or inconclusive outcomes remain evidence.
+Fixed random Fourier features were proposed to reduce high-frequency approximation difficulty in a tanh PINN. The manufactured Helmholtz condition n=6 is primary; n=12 is the preregistered stress/falsification case. The approved values are recorded in configs/frozen.yaml. Neither the conditions nor the settings were changed in response to the submitted results.
 
-## Construction decisions (before protected execution)
+## Preparation and interface changes
 
-- Boundary points: 128 half-open, equally spaced samples around each oriented side; each corner occurs once, giving 512 unique points.
-- Weight initialization: Xavier uniform; all biases exactly zero. The RFF matrix is a nontrainable model buffer.
-- Sobol: PyTorch scrambled 2D Sobol, seed 0/1/2, 2,048 draws, mapped to `(-1,1)²`, saved as float32 `.npy`. RFF: independent CPU `torch.Generator` seed 2026, one float32 normal draw of shape `(32,2)` scaled by 3. Generation metadata and SHA-256 hashes are committed.
-- Cosine LR uses `update-1` over `7999`: update 1 is exactly `1e-3`, update 8,000 exactly `1e-4`; no restarts.
-- End-of-training weights are retained; there is no checkpoint selection. Evaluation is barred until all six training slots for that n are terminal.
-- Infrastructure recovery starts a new attempt with the identical frozen specification and preserves prior attempts; scientific failures remain terminal.
+The baseline source revision was 3258b1d47baa734fea102d7f8ea38fdd626d8174. Revision 0677b40869fabf50035075e240aea3b98a0c7e05 introduced separate training/evaluation/finalization commands and training progress output. The PDE, architectures, loss, optimizer, schedule, point sets, seeds and update budget were unchanged. Frozen Sobol/RFF assets were committed before the submitted execution. Historical source documentation and the original execution journal are retained under submission/provenance/.
 
-## Pre-run verification
+## Execution history and deviation
 
-Construction verification, 2026-10-01 (local Windows CPU): Python 3.14.3, PyTorch 2.12.0+cpu. `python scripts/validate_protocol.py` passed frozen values and hashes; `python -m pytest -q` passed 9 tests; `python scripts/run_smoke.py` passed tiny CPU training and evaluation for both methods at non-official `n=2`, 24 interior points, and 3 updates; `python -m compileall -q src scripts tests` passed; `python -m pip install --dry-run -r requirements.txt` resolved the local pinned requirements. Smoke files are ignored under `smoke_outputs/`; `results/raw/` contains no protected attempts. A reviewed commit SHA and Colab GPU verification remain for the protected phase.
+Before the submitted cohort, an execution-status record showed all six primary models completed at 8,000 updates under 3258b1d47baa734fea102d7f8ea38fdd626d8174, and a stress model with a running status. Its subsequent progress and final status are not established by the available record. The experimenter then requested a new execution from the beginning in a separate Drive directory. The submitted cohort contains 12 complete models under 0677b40869fabf50035075e240aea3b98a0c7e05; earlier outputs were not pooled, replaced or used to select checkpoints in this cohort.
 
-Before protected execution, append the reviewed Git SHA, reviewer, validation result, assigned Colab accelerator, and start timestamp here. Local construction does not execute protected runs.
+The experimenter confirmed that the new execution did not have separate approval from Ryan. This is an additional-workload deviation from the approved execution history and is disclosed for reviewer disposition. The earlier raw output archive was not supplied for this review; its status record is retained in submission/provenance/prior_execution_status.json. No assertion of full historical compliance or approval is made.
 
-## Protected execution / interruptions / failures / observations / decisions / deviations
+## Submitted execution: 1 October 2026
 
-Append dated entries with exact Git SHA, GPU, attempt path, event, evidence path, and decision. Preserve chronology. Never rewrite a failure into a successful story or alter frozen settings after seeing held-out metrics.
+| Field | Evidence |
+|---|---|
+| Scientific source SHA | 0677b40869fabf50035075e240aea3b98a0c7e05 |
+| Executed launcher source SHA | de869e2d240439cbe24a16d96478e7e824322625 |
+| Working tree during each run | Clean, recorded in all 12 run.json files |
+| Accelerator | Tesla T4; one GPU; 15,637,086,208 bytes reported device memory |
+| Python / PyTorch / CUDA | Python 3.13.15; PyTorch 2.12.0+cu130; CUDA 13.0 |
+| Precision / deterministic configuration | float32; deterministic algorithms; TF32 disabled; CUBLAS_WORKSPACE_CONFIG=:4096:8 |
+| First training start, UTC | 2026-10-01T09:46:12.082440+00:00 |
+| Last training end, UTC | 2026-10-01T10:20:49.997165+00:00 |
+| Final evaluation timestamp, UTC | 2026-10-01T10:20:59.274825+00:00 |
+| Execution span, IST | 15:16:12 to 15:50:59 on 1 October 2026 |
+| Intended slots / completed training / completed evaluation | 12 / 12 / 12 |
+| Updates per model | 8,000 |
+| Measured training time | 1969.857 s (32.83 min) |
+| Measured evaluation time | 11.592 s |
+| First training to final evaluation | 2087.192 s (34.79 min) |
+| Numerical failures within submitted cohort | None recorded |
+| Infrastructure-interrupted attempts within submitted cohort | None recorded |
+| Retries within submitted cohort | None; one attempt_000 directory for each of the 12 slots |
+| Earlier execution | Separate completed primary cohort and stress attempt, disclosed above |
+| Frozen scientific changes during submitted execution | None observed in source, configs, asset hashes or provenance |
 
-## Execution interface update, 2026-10-01 (before protected execution)
+All six n=6 training records are terminal before the first primary evaluation. All six n=12 training records are terminal before the first stress evaluation. Stress training starts after primary evaluation completes. Final weights are those after update 8,000; no earlier checkpoint was selected.
 
-The user confirmed that no protected model had started and requested visible progress and separate runs. Added training-only console progress and runner actions for one approved slot per invocation, condition evaluation, finalization, and metadata-only status. Added a thin Colab launcher with one training cell per model. Frozen scientific configuration, assets, architectures, objective, optimizer, schedule, and step budget are unchanged. New attempts must all use the same reviewed updated Git SHA; existing attempts from another revision remain protected from reuse or overwrite. Local verification uses synthetic orchestration fixtures and tiny non-protected CPU smoke runs only.
+## Observations and final decision
 
-Verification of this update: 16 unit tests passed, frozen protocol/asset validation passed, Python static compilation passed, and the tiny CPU smoke pipeline passed with visible progress. Tests cover all 12 staged slots, evaluation/finalization barriers, failed/completed skip behavior, revision mismatch, explicit infrastructure recovery, metadata-only status, and unexecuted notebook cell syntax/order. No protected attempts exist in the local raw output tree.
+Primary relative L2 error decreased by a mean paired 5.04% with RFF, with improvement in all three pairs. Mean relative L2 remained 0.94988. RFF increased held-out PDE residual and maximum absolute error while reducing boundary error. At n=12, RFF improved relative L2 in one of three pairs; the favorable mean was driven by one poor vanilla result. The numerical outcomes and all seeds were retained unchanged.
 
-## Colab launcher repair, 2026-10-01
+Post-run CPU evaluation found a large RFF residual gap between training points and the held-out grid. This diagnostic used saved final weights without optimization. It did not influence training, checkpoint selection, feature selection or protocol changes.
 
-The user reported a placeholder-SHA assertion and a revision guard triggered by existing attempt folders. The corrected launcher defaults to experiment SHA `0677b40869fabf50035075e240aea3b98a0c7e05`; this launcher revision does not change the experiment checkout or scientific code. For the two known historical revisions, empty folders or narrowly verified infrastructure records written before training status may be archived outside the checkout, with all bytes retained, original SHA, and a journal entry. Any training/ambiguous evidence blocks migration. Added an unrelated CUDA second-derivative preflight, explicit notebook recovery flag, per-invocation SHA/clean-checkout guards, and timestamped environment records. No protected models were run locally. Local synthetic tests cover migration without data loss and refusal to move actual training records; 28 tests passed. Fresh Colab GPU execution remains unverified locally.
+Decision: retain the complete submitted evidence, report limited primary improvement and stress failure, and perform no post-hoc tuning or replacement training. The additional-workload deviation remains a matter for reviewer disposition.
 
-## Original experiment continuation, 2026-10-01
+## Submission preparation record
 
-The user supplied Colab status records showing six primary models completed at 8,000 updates and one stress model recorded as running at original SHA `3258b1d47baa734fea102d7f8ea38fdd626d8174`. These are user-reported remote records; no local protected run or scientific result inspection occurred. Added a separate original-revision recovery notebook using only that original runner command and a read-only training CSV monitor. The monitor resolves stale `updates_completed=0` records without reading held-out metrics. It guards against visible concurrent runner processes and defaults explicit recovery to disabled. User must verify that other runtimes have stopped before recovery. The original revision and its evidence remain intact; the newer staged launcher cannot be used on these attempts. Synthetic tests verify stale status handling, monitoring the newest attempt while preserving old bytes, and the exact original entrypoint invocation.
-
-## User-requested fresh execution, 2026-10-01
-
-The user explicitly requested starting from the beginning. Added `colab/start_from_beginning.ipynb`, pinned to the reviewed staged experiment SHA `0677b40869fabf50035075e240aea3b98a0c7e05`, using a separate persistent Drive folder `ryan_pinn_trial_from_start_0677b40`. It preserves the earlier experiment folder, logs the restart decision in its external journal, and runs all 12 fixed slots with condition gates and visible progress. No earlier results are selected or combined, and no scientific parameters were changed. Tests check the complete stage sequence, fixed revision, separate folder, empty notebook outputs, syntax, and absence of moves/deletions in fresh setup. No protected training was executed locally.
+This final entry was assembled after execution on 1 October 2026 from the supplied raw records, tables, console logs and subsequent experimenter confirmations. It is not presented as a contemporaneous pre-run entry. The original journal is preserved byte-for-byte. Presentation changes affect documentation and supplementary figures only; raw data, saved weights, original figures and processed numerical tables are unchanged.

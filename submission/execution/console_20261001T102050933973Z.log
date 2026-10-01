@@ -1,0 +1,16 @@
+SKIP n=12 vanilla seed=0: already completed
+SKIP n=12 vanilla seed=1: already completed
+SKIP n=12 vanilla seed=2: already completed
+SKIP n=12 rff seed=0: already completed
+SKIP n=12 rff seed=1: already completed
+SKIP n=12 rff seed=2: already completed
+CONDITION GATE PASSED n=12; starting held-out evaluation
+EVALUATE n=12 vanilla seed=0
+/usr/local/lib/python3.13/dist-packages/torch/autograd/graph.py:882: UserWarning: Attempting to run cuBLAS, but there was no current CUDA context! Attempting to set the primary context... (Triggered internally at /pytorch/aten/src/ATen/cuda/CublasHandlePool.cpp:370.)
+  return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+EVALUATE n=12 vanilla seed=1
+EVALUATE n=12 vanilla seed=2
+EVALUATE n=12 rff seed=0
+EVALUATE n=12 rff seed=1
+EVALUATE n=12 rff seed=2
+CONDITION EVALUATION COMPLETE n=12

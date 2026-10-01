@@ -1,0 +1,35 @@
+{
+  "condition": "preregistered_stress_failure",
+  "ended_at_utc": "2026-10-01T10:14:41.936636+00:00",
+  "evaluation_status": "completed",
+  "label": "PROTECTED",
+  "method": "rff",
+  "n": 12,
+  "parameter_count": 12871,
+  "provenance": {
+    "accelerator": "Tesla T4",
+    "captured_at_utc": "2026-10-01T10:11:37.908801+00:00",
+    "config_sha256": "7f76c2c4f68231bd76b3fe07a0aeab945ab5dd57a52e9ac614c7729cbb78ed41",
+    "cublas_workspace_config": ":4096:8",
+    "cuda_device_count": 1,
+    "cuda_runtime": "13.0",
+    "git_sha": "0677b40869fabf50035075e240aea3b98a0c7e05",
+    "git_status": "",
+    "gpu_memory_bytes": 15637086208,
+    "platform": "Linux-6.6.122+-x86_64-with-glibc2.39",
+    "python": "3.13.15 (main, Aug  6 2026, 11:06:22) [GCC 13.3.0]",
+    "rff_sha256": "76130b8c82524338e339d86ec525d3476ffcd3ea889ca93dc7db51c578d2ed63",
+    "sobol_sha256": {
+      "0": "f5fc079758da5519dbbfc48084a7f85de8db052a05c64ef250f76bffb4665c48",
+      "1": "e7332b2a7bb1da1cf6e78ab82ebae5990938322016388d8894bd7d1f2ec43c56",
+      "2": "9ddf3c59bd5ae415262906a8868540782908fdc88d1b0501684bd84ff78eee7b"
+    },
+    "torch": "2.12.0+cu130"
+  },
+  "seed": 0,
+  "started_at_utc": "2026-10-01T10:11:39.119342+00:00",
+  "status": "completed",
+  "updates_completed": 8000,
+  "updates_planned": 8000,
+  "wall_seconds_training": 182.79542979999997
+}

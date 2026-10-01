@@ -1,0 +1,12 @@
+__pycache__/
+.pytest_cache/
+*.py[cod]
+.venv/
+smoke_outputs/
+/results/raw/**
+!/results/raw/.gitkeep
+/results/processed/**
+!/results/processed/.gitkeep
+/figures/**
+!/figures/.gitkeep
+/report/methods_results.md

@@ -1,0 +1,1373 @@
+{
+  "git_sha": "0677b40869fabf50035075e240aea3b98a0c7e05",
+  "checks_passed": 199,
+  "checks_total": 199,
+  "checks": [
+    {
+      "check": "Archived tracked files match frozen Git blobs",
+      "passed": true,
+      "detail": {
+        "checked": 35,
+        "missing": [],
+        "mismatches": []
+      }
+    },
+    {
+      "check": "External code SHA",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Sobol seed 0 hash",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Sobol seed 1 hash",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Sobol seed 2 hash",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "RFF matrix hash",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Exactly 12 attempt directories",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "All five processed table dimensions",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Manifest selects 12 completed/evaluated attempts at same SHA",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=0 terminal record",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=0 provenance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=0 resolved config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=0 full finite logs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=0 logged schedule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=0 loss decomposition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=0 prediction array",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=0 stored prediction L2/Linf reproduce metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=0 parameter count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=0 finite saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=0 saved weights reproduce grid predictions on CPU",
+      "passed": true,
+      "detail": 5.066394805908203e-07
+    },
+    {
+      "check": "n=6 vanilla seed=0 CPU re-evaluation agrees with all four metrics",
+      "passed": true,
+      "detail": {
+        "relative_l2": -3.9522619177390084e-08,
+        "linf": 3.725290298461914e-09,
+        "normalized_residual_rms": -1.1219980444732158e-08,
+        "boundary_rmse": 2.8597976096597644e-09
+      }
+    },
+    {
+      "check": "n=6 vanilla seed=1 terminal record",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=1 provenance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=1 resolved config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=1 full finite logs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=1 logged schedule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=1 loss decomposition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=1 prediction array",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=1 stored prediction L2/Linf reproduce metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=1 parameter count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=1 finite saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=1 saved weights reproduce grid predictions on CPU",
+      "passed": true,
+      "detail": 3.725290298461914e-07
+    },
+    {
+      "check": "n=6 vanilla seed=1 CPU re-evaluation agrees with all four metrics",
+      "passed": true,
+      "detail": {
+        "relative_l2": -3.937735826298194e-08,
+        "linf": -7.450580596923828e-08,
+        "normalized_residual_rms": -1.1613272510313521e-08,
+        "boundary_rmse": 8.345442319840357e-09
+      }
+    },
+    {
+      "check": "n=6 vanilla seed=2 terminal record",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=2 provenance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=2 resolved config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=2 full finite logs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=2 logged schedule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=2 loss decomposition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=2 prediction array",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=2 stored prediction L2/Linf reproduce metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=2 parameter count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=2 finite saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 vanilla seed=2 saved weights reproduce grid predictions on CPU",
+      "passed": true,
+      "detail": 4.172325134277344e-07
+    },
+    {
+      "check": "n=6 vanilla seed=2 CPU re-evaluation agrees with all four metrics",
+      "passed": true,
+      "detail": {
+        "relative_l2": -3.888314137334703e-08,
+        "linf": 1.043081283569336e-07,
+        "normalized_residual_rms": -1.1991343640271879e-08,
+        "boundary_rmse": -1.201532054406762e-09
+      }
+    },
+    {
+      "check": "n=6 rff seed=0 terminal record",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=0 provenance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=0 resolved config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=0 full finite logs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=0 logged schedule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=0 loss decomposition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=0 prediction array",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=0 stored prediction L2/Linf reproduce metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=0 parameter count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=0 finite saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=0 frozen B in saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=0 saved weights reproduce grid predictions on CPU",
+      "passed": true,
+      "detail": 5.923211574554443e-07
+    },
+    {
+      "check": "n=6 rff seed=0 CPU re-evaluation agrees with all four metrics",
+      "passed": true,
+      "detail": {
+        "relative_l2": -3.8877827068795057e-08,
+        "linf": 7.450580596923828e-08,
+        "normalized_residual_rms": -1.9021259345386454e-08,
+        "boundary_rmse": -8.982855375337662e-10
+      }
+    },
+    {
+      "check": "n=6 rff seed=1 terminal record",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=1 provenance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=1 resolved config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=1 full finite logs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=1 logged schedule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=1 loss decomposition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=1 prediction array",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=1 stored prediction L2/Linf reproduce metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=1 parameter count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=1 finite saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=1 frozen B in saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=1 saved weights reproduce grid predictions on CPU",
+      "passed": true,
+      "detail": 5.979090929031372e-07
+    },
+    {
+      "check": "n=6 rff seed=1 CPU re-evaluation agrees with all four metrics",
+      "passed": true,
+      "detail": {
+        "relative_l2": -3.9254415828970934e-08,
+        "linf": 1.1920928955078125e-07,
+        "normalized_residual_rms": -1.3128758191705003e-08,
+        "boundary_rmse": 2.069499700297142e-09
+      }
+    },
+    {
+      "check": "n=6 rff seed=2 terminal record",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=2 provenance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=2 resolved config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=2 full finite logs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=2 logged schedule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=2 loss decomposition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=2 prediction array",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=2 stored prediction L2/Linf reproduce metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=2 parameter count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=2 finite saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=2 frozen B in saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=6 rff seed=2 saved weights reproduce grid predictions on CPU",
+      "passed": true,
+      "detail": 5.103647708892822e-07
+    },
+    {
+      "check": "n=6 rff seed=2 CPU re-evaluation agrees with all four metrics",
+      "passed": true,
+      "detail": {
+        "relative_l2": -3.926425762301733e-08,
+        "linf": -5.960464477539063e-08,
+        "normalized_residual_rms": -2.1555892182334446e-08,
+        "boundary_rmse": -5.828979845893048e-09
+      }
+    },
+    {
+      "check": "n=12 vanilla seed=0 terminal record",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=0 provenance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=0 resolved config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=0 full finite logs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=0 logged schedule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=0 loss decomposition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=0 prediction array",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=0 stored prediction L2/Linf reproduce metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=0 parameter count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=0 finite saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=0 saved weights reproduce grid predictions on CPU",
+      "passed": true,
+      "detail": 4.1350722312927246e-07
+    },
+    {
+      "check": "n=12 vanilla seed=0 CPU re-evaluation agrees with all four metrics",
+      "passed": true,
+      "detail": {
+        "relative_l2": -3.2753867529322633e-07,
+        "linf": -1.862645149230957e-08,
+        "normalized_residual_rms": 2.891718198227977e-09,
+        "boundary_rmse": 6.449620820053736e-10
+      }
+    },
+    {
+      "check": "n=12 vanilla seed=1 terminal record",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=1 provenance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=1 resolved config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=1 full finite logs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=1 logged schedule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=1 loss decomposition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=1 prediction array",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=1 stored prediction L2/Linf reproduce metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=1 parameter count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=1 finite saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=1 saved weights reproduce grid predictions on CPU",
+      "passed": true,
+      "detail": 2.6226043701171875e-06
+    },
+    {
+      "check": "n=12 vanilla seed=1 CPU re-evaluation agrees with all four metrics",
+      "passed": true,
+      "detail": {
+        "relative_l2": -6.006265245162012e-07,
+        "linf": 2.384185791015625e-07,
+        "normalized_residual_rms": 7.52765560996238e-09,
+        "boundary_rmse": -1.2161067555749305e-08
+      }
+    },
+    {
+      "check": "n=12 vanilla seed=2 terminal record",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=2 provenance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=2 resolved config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=2 full finite logs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=2 logged schedule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=2 loss decomposition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=2 prediction array",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=2 stored prediction L2/Linf reproduce metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=2 parameter count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=2 finite saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 vanilla seed=2 saved weights reproduce grid predictions on CPU",
+      "passed": true,
+      "detail": 4.172325134277344e-07
+    },
+    {
+      "check": "n=12 vanilla seed=2 CPU re-evaluation agrees with all four metrics",
+      "passed": true,
+      "detail": {
+        "relative_l2": -3.2894427404173143e-07,
+        "linf": 2.9802322387695312e-08,
+        "normalized_residual_rms": 3.1380681386750098e-09,
+        "boundary_rmse": 1.4723952816535213e-08
+      }
+    },
+    {
+      "check": "n=12 rff seed=0 terminal record",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=0 provenance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=0 resolved config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=0 full finite logs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=0 logged schedule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=0 loss decomposition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=0 prediction array",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=0 stored prediction L2/Linf reproduce metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=0 parameter count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=0 finite saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=0 frozen B in saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=0 saved weights reproduce grid predictions on CPU",
+      "passed": true,
+      "detail": 3.078952431678772e-06
+    },
+    {
+      "check": "n=12 rff seed=0 CPU re-evaluation agrees with all four metrics",
+      "passed": true,
+      "detail": {
+        "relative_l2": -3.2905887104028864e-07,
+        "linf": 3.5762786865234375e-07,
+        "normalized_residual_rms": 3.802113957007691e-09,
+        "boundary_rmse": -5.742553861576814e-09
+      }
+    },
+    {
+      "check": "n=12 rff seed=1 terminal record",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=1 provenance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=1 resolved config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=1 full finite logs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=1 logged schedule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=1 loss decomposition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=1 prediction array",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=1 stored prediction L2/Linf reproduce metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=1 parameter count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=1 finite saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=1 frozen B in saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=1 saved weights reproduce grid predictions on CPU",
+      "passed": true,
+      "detail": 2.8908252716064453e-06
+    },
+    {
+      "check": "n=12 rff seed=1 CPU re-evaluation agrees with all four metrics",
+      "passed": true,
+      "detail": {
+        "relative_l2": -3.254180234169013e-07,
+        "linf": -2.384185791015625e-07,
+        "normalized_residual_rms": 1.6068213426478906e-09,
+        "boundary_rmse": 4.2639102621421475e-09
+      }
+    },
+    {
+      "check": "n=12 rff seed=2 terminal record",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=2 provenance",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=2 resolved config",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=2 full finite logs",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=2 logged schedule",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=2 loss decomposition",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=2 prediction array",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=2 stored prediction L2/Linf reproduce metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=2 parameter count",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=2 finite saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=2 frozen B in saved weights",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 rff seed=2 saved weights reproduce grid predictions on CPU",
+      "passed": true,
+      "detail": 1.8477439880371094e-06
+    },
+    {
+      "check": "n=12 rff seed=2 CPU re-evaluation agrees with all four metrics",
+      "passed": true,
+      "detail": {
+        "relative_l2": -3.3540436161771936e-07,
+        "linf": -3.5762786865234375e-07,
+        "normalized_residual_rms": 7.834549675678204e-09,
+        "boundary_rmse": 1.8270716765043937e-08
+      }
+    },
+    {
+      "check": "n=6 evaluation follows six terminal training records",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "n=12 evaluation follows six terminal training records",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Stress training follows primary evaluation",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Per-seed table reproduces raw metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Paired effects reproduce raw metrics",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 vanilla relative_l2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 vanilla linf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 vanilla normalized_residual_rms",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 vanilla boundary_rmse",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 rff relative_l2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 rff linf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 rff normalized_residual_rms",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 rff boundary_rmse",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 paired_absolute_difference relative_l2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 paired_percentage_improvement relative_l2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 paired_absolute_difference linf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 paired_percentage_improvement linf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 paired_absolute_difference normalized_residual_rms",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 paired_percentage_improvement normalized_residual_rms",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 paired_absolute_difference boundary_rmse",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=6 paired_percentage_improvement boundary_rmse",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 vanilla relative_l2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 vanilla linf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 vanilla normalized_residual_rms",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 vanilla boundary_rmse",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 rff relative_l2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 rff linf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 rff normalized_residual_rms",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 rff boundary_rmse",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 paired_absolute_difference relative_l2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 paired_percentage_improvement relative_l2",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 paired_absolute_difference linf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 paired_percentage_improvement linf",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 paired_absolute_difference normalized_residual_rms",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 paired_percentage_improvement normalized_residual_rms",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 paired_absolute_difference boundary_rmse",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Summary n=12 paired_percentage_improvement boundary_rmse",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Compute table agrees with raw times",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "All 16 figure files present",
+      "passed": true,
+      "detail": ""
+    },
+    {
+      "check": "Report has completion marker",
+      "passed": true,
+      "detail": ""
+    }
+  ],
+  "independent_cpu_metrics": [
+    {
+      "n": 6,
+      "method": "vanilla",
+      "seed": 0,
+      "archived_relative_l2": 1.0003486141512925,
+      "archived_linf": 1.0182691514492035,
+      "archived_normalized_residual_rms": 0.4980301749391249,
+      "archived_boundary_rmse": 0.007632662073415475,
+      "cpu_relative_l2": 1.0003485746286733,
+      "cpu_linf": 1.0182691551744938,
+      "cpu_normalized_residual_rms": 0.49803016371914444,
+      "cpu_boundary_rmse": 0.007632664933213085,
+      "max_cpu_prediction_difference": 5.066394805908203e-07,
+      "final_collocation_residual_rms_cpu": 0.4999340654649349,
+      "heldout_interior_residual_rms_cpu": 0.5019347309367681,
+      "heldout_to_collocation_residual_ratio": 0.996191694310689,
+      "first_logged_loss": 0.5750411748886108,
+      "last_logged_loss": 0.24999235570430756,
+      "last_logged_residual_mse": 0.24993404746055603,
+      "last_logged_boundary_mse": 5.830619193147868e-05,
+      "prediction_rms": 0.008483660427624485,
+      "exact_rms": 0.498054485520853,
+      "prediction_exact_cosine": -0.011950662818020541,
+      "exact_mode_projection_coefficient": -0.000203562797596299
+    },
+    {
+      "n": 6,
+      "method": "vanilla",
+      "seed": 1,
+      "archived_relative_l2": 1.000278421954197,
+      "archived_linf": 1.0107769379392266,
+      "archived_normalized_residual_rms": 0.497948463574358,
+      "archived_boundary_rmse": 0.007846628278232745,
+      "cpu_relative_l2": 1.0002783825768387,
+      "cpu_linf": 1.0107768634334207,
+      "cpu_normalized_residual_rms": 0.4979484519610855,
+      "cpu_boundary_rmse": 0.007846636623675065,
+      "max_cpu_prediction_difference": 3.725290298461914e-07,
+      "final_collocation_residual_rms_cpu": 0.49974581471212987,
+      "heldout_interior_residual_rms_cpu": 0.5018522868497187,
+      "heldout_to_collocation_residual_ratio": 0.9964034461157425,
+      "first_logged_loss": 0.2661566734313965,
+      "last_logged_loss": 0.24980707466602325,
+      "last_logged_residual_mse": 0.24974633753299713,
+      "last_logged_boundary_mse": 6.0732607380487025e-05,
+      "prediction_rms": 0.005033469236592003,
+      "exact_rms": 0.498054485520853,
+      "prediction_exact_cosine": -0.022496159918514544,
+      "exact_mode_projection_coefficient": -0.00022735207713634663
+    },
+    {
+      "n": 6,
+      "method": "vanilla",
+      "seed": 2,
+      "archived_relative_l2": 1.000394736309118,
+      "archived_linf": 1.0193190798163414,
+      "archived_normalized_residual_rms": 0.49804907693615236,
+      "archived_boundary_rmse": 0.0075694590969349745,
+      "cpu_relative_l2": 1.0003946974259765,
+      "cpu_linf": 1.0193191841244698,
+      "cpu_normalized_residual_rms": 0.4980490649448087,
+      "cpu_boundary_rmse": 0.00756945789540292,
+      "max_cpu_prediction_difference": 4.172325134277344e-07,
+      "final_collocation_residual_rms_cpu": 0.49966506617788964,
+      "heldout_interior_residual_rms_cpu": 0.5019538545320095,
+      "heldout_to_collocation_residual_ratio": 0.9967658310687152,
+      "first_logged_loss": 0.29115915298461914,
+      "last_logged_loss": 0.24972248077392578,
+      "last_logged_residual_mse": 0.24966517090797424,
+      "last_logged_boundary_mse": 5.730698103434406e-05,
+      "prediction_rms": 0.009520777294887447,
+      "exact_rms": 0.498054485520853,
+      "prediction_exact_cosine": -0.011093591110443913,
+      "exact_mode_projection_coefficient": -0.00021206435253298084
+    },
+    {
+      "n": 6,
+      "method": "rff",
+      "seed": 0,
+      "archived_relative_l2": 0.9541052827910232,
+      "archived_linf": 1.194228619337082,
+      "archived_normalized_residual_rms": 0.7985235689723462,
+      "archived_boundary_rmse": 0.0013288783462805393,
+      "cpu_relative_l2": 0.9541052439131962,
+      "cpu_linf": 1.1942286938428879,
+      "cpu_normalized_residual_rms": 0.7985235499510869,
+      "cpu_boundary_rmse": 0.0013288774479950018,
+      "max_cpu_prediction_difference": 5.923211574554443e-07,
+      "final_collocation_residual_rms_cpu": 0.00012124859319343676,
+      "heldout_interior_residual_rms_cpu": 0.8033463910443778,
+      "heldout_to_collocation_residual_ratio": 6585.83764907807,
+      "first_logged_loss": 2.16682767868042,
+      "last_logged_loss": 1.7796547808757168e-06,
+      "last_logged_residual_mse": 1.3607783344582458e-08,
+      "last_logged_boundary_mse": 1.766047034834628e-06,
+      "prediction_rms": 0.0866608406503572,
+      "exact_rms": 0.498054485520853,
+      "prediction_exact_cosine": 0.344711628763084,
+      "exact_mode_projection_coefficient": 0.05997936835562349
+    },
+    {
+      "n": 6,
+      "method": "rff",
+      "seed": 1,
+      "archived_relative_l2": 0.9474760646089445,
+      "archived_linf": 1.3053798079490662,
+      "archived_normalized_residual_rms": 0.791686331552136,
+      "archived_boundary_rmse": 0.0012085569706097165,
+      "cpu_relative_l2": 0.9474760253545287,
+      "cpu_linf": 1.3053799271583557,
+      "cpu_normalized_residual_rms": 0.7916863184233778,
+      "cpu_boundary_rmse": 0.0012085590401094168,
+      "max_cpu_prediction_difference": 5.979090929031372e-07,
+      "final_collocation_residual_rms_cpu": 9.444310235994364e-05,
+      "heldout_interior_residual_rms_cpu": 0.7966002477109257,
+      "heldout_to_collocation_residual_ratio": 8382.680139054362,
+      "first_logged_loss": 2.630925416946411,
+      "last_logged_loss": 1.4739038078914746e-06,
+      "last_logged_residual_mse": 1.2641269364621621e-08,
+      "last_logged_boundary_mse": 1.4612625136578572e-06,
+      "prediction_rms": 0.09908585516389233,
+      "exact_rms": 0.498054485520853,
+      "prediction_exact_cosine": 0.35655086849545653,
+      "exact_mode_projection_coefficient": 0.07093430879581325
+    },
+    {
+      "n": 6,
+      "method": "rff",
+      "seed": 2,
+      "archived_relative_l2": 0.9480592446762142,
+      "archived_linf": 1.1729495823383331,
+      "archived_normalized_residual_rms": 0.7757055763884899,
+      "archived_boundary_rmse": 0.001150722869444546,
+      "cpu_relative_l2": 0.9480592054119565,
+      "cpu_linf": 1.1729495227336884,
+      "cpu_normalized_residual_rms": 0.7757055548325977,
+      "cpu_boundary_rmse": 0.0011507170404647,
+      "max_cpu_prediction_difference": 5.103647708892822e-07,
+      "final_collocation_residual_rms_cpu": 0.0002370004761916156,
+      "heldout_interior_residual_rms_cpu": 0.7803723184746023,
+      "heldout_to_collocation_residual_ratio": 3273.012642411053,
+      "first_logged_loss": 1.8918583393096924,
+      "last_logged_loss": 1.4015620308782673e-06,
+      "last_logged_residual_mse": 7.560258552530286e-08,
+      "last_logged_boundary_mse": 1.3259594879855285e-06,
+      "prediction_rms": 0.08643661680895633,
+      "exact_rms": 0.498054485520853,
+      "prediction_exact_cosine": 0.3782885413736728,
+      "exact_mode_projection_coefficient": 0.06565141491605958
+    },
+    {
+      "n": 12,
+      "method": "vanilla",
+      "seed": 0,
+      "archived_relative_l2": 1.001257881457636,
+      "archived_linf": 1.0541990287601948,
+      "archived_normalized_residual_rms": 0.49807045039582437,
+      "archived_boundary_rmse": 0.002467766034837322,
+      "cpu_relative_l2": 1.0012575539189608,
+      "cpu_linf": 1.0541990101337433,
+      "cpu_normalized_residual_rms": 0.49807045328754257,
+      "cpu_boundary_rmse": 0.002467766679799404,
+      "max_cpu_prediction_difference": 4.1350722312927246e-07,
+      "final_collocation_residual_rms_cpu": 0.4999748164033689,
+      "heldout_interior_residual_rms_cpu": 0.5019768857973881,
+      "heldout_to_collocation_residual_ratio": 0.9961910819238345,
+      "first_logged_loss": 0.42371752858161926,
+      "last_logged_loss": 0.24998091161251068,
+      "last_logged_residual_mse": 0.24997486174106598,
+      "last_logged_boundary_mse": 6.050167030480225e-06,
+      "prediction_rms": 0.02495987634748056,
+      "exact_rms": 0.49805453796186316,
+      "prediction_exact_cosine": -5.189016170707358e-05,
+      "exact_mode_projection_coefficient": -2.600462002576566e-06
+    },
+    {
+      "n": 12,
+      "method": "vanilla",
+      "seed": 1,
+      "archived_relative_l2": 1.947994523137964,
+      "archived_linf": 4.7492223381996155,
+      "archived_normalized_residual_rms": 0.5198440968335093,
+      "archived_boundary_rmse": 0.03829115817241214,
+      "cpu_relative_l2": 1.9479939225114395,
+      "cpu_linf": 4.749222576618195,
+      "cpu_normalized_residual_rms": 0.5198441043611649,
+      "cpu_boundary_rmse": 0.03829114601134458,
+      "max_cpu_prediction_difference": 2.6226043701171875e-06,
+      "final_collocation_residual_rms_cpu": 0.4087918612716523,
+      "heldout_interior_residual_rms_cpu": 0.5237418502001034,
+      "heldout_to_collocation_residual_ratio": 1.2716596234182747,
+      "first_logged_loss": 0.2588055431842804,
+      "last_logged_loss": 0.16859734058380127,
+      "last_logged_residual_mse": 0.16713109612464905,
+      "last_logged_boundary_mse": 0.001466237474232912,
+      "prediction_rms": 0.872284414984553,
+      "exact_rms": 0.49805453796186316,
+      "prediction_exact_cosine": 0.07784226298486326,
+      "exact_mode_projection_coefficient": 0.13633163174884855
+    },
+    {
+      "n": 12,
+      "method": "vanilla",
+      "seed": 2,
+      "archived_relative_l2": 1.0021119331700281,
+      "archived_linf": 1.0755556523799896,
+      "archived_normalized_residual_rms": 0.4980802937717374,
+      "archived_boundary_rmse": 0.0035517525493912174,
+      "cpu_relative_l2": 1.002111604225754,
+      "cpu_linf": 1.075555682182312,
+      "cpu_normalized_residual_rms": 0.49808029690980554,
+      "cpu_boundary_rmse": 0.003551767273344034,
+      "max_cpu_prediction_difference": 4.172325134277344e-07,
+      "final_collocation_residual_rms_cpu": 0.4999314611368034,
+      "heldout_interior_residual_rms_cpu": 0.5019868020456936,
+      "heldout_to_collocation_residual_ratio": 0.99629716396966,
+      "first_logged_loss": 0.2723139524459839,
+      "last_logged_loss": 0.2499413937330246,
+      "last_logged_residual_mse": 0.24993109703063965,
+      "last_logged_boundary_mse": 1.0293846571585163e-05,
+      "prediction_rms": 0.03236516192479262,
+      "exact_rms": 0.49805453796186316,
+      "prediction_exact_cosine": -3.736986713361492e-05,
+      "exact_mode_projection_coefficient": -2.4284122775427837e-06
+    },
+    {
+      "n": 12,
+      "method": "rff",
+      "seed": 0,
+      "archived_relative_l2": 1.0317527594119702,
+      "archived_linf": 1.9481807351112366,
+      "archived_normalized_residual_rms": 0.6076553853758605,
+      "archived_boundary_rmse": 0.0007869439968337952,
+      "cpu_relative_l2": 1.0317524303530992,
+      "cpu_linf": 1.9481810927391052,
+      "cpu_normalized_residual_rms": 0.6076553891779745,
+      "cpu_boundary_rmse": 0.0007869382542799336,
+      "max_cpu_prediction_difference": 3.078952431678772e-06,
+      "final_collocation_residual_rms_cpu": 0.00029069887989303483,
+      "heldout_interior_residual_rms_cpu": 0.611331828453857,
+      "heldout_to_collocation_residual_ratio": 2090.3258705419385,
+      "first_logged_loss": 0.46687185764312744,
+      "last_logged_loss": 5.437328240986972e-07,
+      "last_logged_residual_mse": 6.08463679441229e-08,
+      "last_logged_boundary_mse": 4.828864348382922e-07,
+      "prediction_rms": 0.4011387722464756,
+      "exact_rms": 0.49805453796186316,
+      "prediction_exact_cosine": 0.36265592068108055,
+      "exact_mode_projection_coefficient": 0.2920871751221794
+    },
+    {
+      "n": 12,
+      "method": "rff",
+      "seed": 1,
+      "archived_relative_l2": 1.03876064370713,
+      "archived_linf": 2.0562769174575806,
+      "archived_normalized_residual_rms": 0.5930253170332995,
+      "archived_boundary_rmse": 0.0004365975742384619,
+      "cpu_relative_l2": 1.0387603182891065,
+      "cpu_linf": 2.0562766790390015,
+      "cpu_normalized_residual_rms": 0.5930253186401209,
+      "cpu_boundary_rmse": 0.00043660183814872404,
+      "max_cpu_prediction_difference": 2.8908252716064453e-06,
+      "final_collocation_residual_rms_cpu": 5.790119184418532e-05,
+      "heldout_interior_residual_rms_cpu": 0.5964989932845465,
+      "heldout_to_collocation_residual_ratio": 10242.022655353596,
+      "first_logged_loss": 0.5436100959777832,
+      "last_logged_loss": 1.847549100375545e-07,
+      "last_logged_residual_mse": 2.3623021316865334e-09,
+      "last_logged_boundary_mse": 1.8239261123653705e-07,
+      "prediction_rms": 0.42102579427247155,
+      "exact_rms": 0.49805453796186316,
+      "prediction_exact_cosine": 0.3759300864315219,
+      "exact_mode_projection_coefficient": 0.3177889952742278
+    },
+    {
+      "n": 12,
+      "method": "rff",
+      "seed": 2,
+      "archived_relative_l2": 1.062092931867175,
+      "archived_linf": 1.938748836517334,
+      "archived_normalized_residual_rms": 0.5713731069955816,
+      "archived_boundary_rmse": 0.0014062424997288642,
+      "cpu_relative_l2": 1.0620925964628134,
+      "cpu_linf": 1.9387484788894653,
+      "cpu_normalized_residual_rms": 0.5713731148301313,
+      "cpu_boundary_rmse": 0.0014062607704456293,
+      "max_cpu_prediction_difference": 1.8477439880371094e-06,
+      "final_collocation_residual_rms_cpu": 0.0004061339604409506,
+      "heldout_interior_residual_rms_cpu": 0.5748902057147675,
+      "heldout_to_collocation_residual_ratio": 1406.8587473201603,
+      "first_logged_loss": 0.40172943472862244,
+      "last_logged_loss": 1.1417773748689797e-06,
+      "last_logged_residual_mse": 8.510649252002622e-08,
+      "last_logged_boundary_mse": 1.0566708397163893e-06,
+      "prediction_rms": 0.4508505460135031,
+      "exact_rms": 0.49805453796186316,
+      "prediction_exact_cosine": 0.38188838584090434,
+      "exact_mode_projection_coefficient": 0.34569422477536815
+    }
+  ],
+  "cpu_torch": "2.12.0+cpu",
+  "audit_seconds": 6.071929500089027,
+  "training_seconds": 1969.8567658489997,
+  "evaluation_seconds": 11.591607375999502,
+  "wall_span_seconds": 2087.192385
+}

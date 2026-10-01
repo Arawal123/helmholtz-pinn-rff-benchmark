@@ -1,0 +1,108 @@
+{
+  "data": {
+    "boundary_points": 512,
+    "boundary_points_per_side": 128,
+    "frozen_sobol_assets": {
+      "0": {
+        "path": "data/frozen/sobol_seed_0.npy",
+        "sha256": "f5fc079758da5519dbbfc48084a7f85de8db052a05c64ef250f76bffb4665c48"
+      },
+      "1": {
+        "path": "data/frozen/sobol_seed_1.npy",
+        "sha256": "e7332b2a7bb1da1cf6e78ab82ebae5990938322016388d8894bd7d1f2ec43c56"
+      },
+      "2": {
+        "path": "data/frozen/sobol_seed_2.npy",
+        "sha256": "9ddf3c59bd5ae415262906a8868540782908fdc88d1b0501684bd84ff78eee7b"
+      }
+    },
+    "heldout_grid_size": 257,
+    "interior_points": 2048,
+    "interior_sampler": "scrambled_sobol"
+  },
+  "evaluation": {
+    "delayed_until_condition_terminal": true,
+    "metrics": [
+      "relative_l2",
+      "linf",
+      "normalized_residual_rms",
+      "boundary_rmse"
+    ],
+    "selection_use": "forbidden"
+  },
+  "execution": {
+    "expected_accelerator": "T4-class or better",
+    "official_output_root": "results/raw",
+    "protected_runs": 12,
+    "refuse_raw_overwrite": true,
+    "require_clean_git": true,
+    "require_cuda": true
+  },
+  "model": {
+    "rff": {
+      "activation": "tanh",
+      "bandwidth": 3.0,
+      "bias_initialization": "zeros",
+      "feature_formula": "[sin(2*pi*B*x), cos(2*pi*B*x)]",
+      "frequencies": 32,
+      "layers": [
+        64,
+        55,
+        55,
+        55,
+        55,
+        1
+      ],
+      "matrix_path": "artifacts/rff/B_seed_2026.npy",
+      "matrix_sha256": "76130b8c82524338e339d86ec525d3476ffcd3ea889ca93dc7db51c578d2ed63",
+      "seed": 2026,
+      "weight_initialization": "xavier_uniform"
+    },
+    "vanilla": {
+      "activation": "tanh",
+      "bias_initialization": "zeros",
+      "layers": [
+        2,
+        64,
+        64,
+        64,
+        64,
+        1
+      ],
+      "weight_initialization": "xavier_uniform"
+    }
+  },
+  "protocol": {
+    "domain": [
+      -1.0,
+      1.0
+    ],
+    "k": 20.0,
+    "name": "ryan_pinn_failure_repair_v1",
+    "precision": "float32",
+    "primary_n": 6,
+    "seeds": [
+      0,
+      1,
+      2
+    ],
+    "status": "FROZEN_APPROVED",
+    "stress_label": "preregistered_stress_failure_condition",
+    "stress_n": 12
+  },
+  "training": {
+    "adaptive_loss_weights": false,
+    "best_checkpoint": false,
+    "curriculum": false,
+    "early_stopping": false,
+    "final_lr": 0.0001,
+    "full_batch": true,
+    "initial_lr": 0.001,
+    "log_every": 100,
+    "optimizer": "Adam",
+    "resampling": false,
+    "retries_on_numerical_failure": 0,
+    "scheduler": "cosine",
+    "updates": 8000
+  }
+}

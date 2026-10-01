@@ -1,31 +1,26 @@
-# Approved protocol compliance map
+# Requirements coverage
 
-| Requirement | Implementation / evidence |
-|---|---|
-| Phase separation; no protected construction runs | `scripts/run_frozen.py` is the only protected entrypoint, with full-pipeline and staged actions; `scripts/run_smoke.py` uses `configs/smoke.yaml`, CPU, and ignored `smoke_outputs/`. Official `results/raw/` is empty until Colab execution. |
-| Source precedence, no post-hoc changes | `configs/frozen.yaml` specifies approved values; `scripts/validate_protocol.py` asserts them exactly before the runner starts. `EXPERIMENT_LOG.md` records chronology and deviations. |
-| PDE, domain, k, exact solution, forcing | `src/pde.py`; checks in `tests/test_protocol.py`. |
-| n=6 primary; n=12 preregistered stress | `configs/frozen.yaml`, fixed order and labels in `scripts/run_frozen.py`, all tables and report. |
-| 2,048 interior scrambled Sobol points; seeds 0,1,2; shared realization | `data/frozen/sobol_seed_*.npy`, `data/frozen/generation.json`, hashes in config; `src/data.py` loads seed asset independent of method/n. `run_manifest.csv` records the same seed hash across pair and difficulty. |
-| 512 fixed boundary points, 128 per side, no duplicate corners | `src/data.py:boundary_points`. Each oriented side uses half-open equally spaced coordinates, starting at one corner and ending before the next; 512 unique points. |
-| 257×257 held-out grid, delayed evaluation, no selection | `src/data.py:heldout_grid`, six-training-run barrier in `scripts/run_frozen.py`, `src/evaluate.py`. Training never imports or calls held-out evaluation. |
-| Normalized residual and equal-weight boundary MSE | `src/pde.py`, checked in `tests/test_protocol.py`. |
-| Vanilla architecture, tanh, Xavier, zero bias, 12,737 parameters | `src/models.py`, validator and tests. |
-| RFF mapping and immutable B, seed 2026, Gaussian σ=3, 12,871 parameters, <2% gap | `artifacts/rff/B_seed_2026.npy` and `.csv`, hash and metadata; `src/models.py` buffer; validator and tests. |
-| float32 full-batch Adam, initial/final LR, cosine over exactly 8,000 updates | `src/train.py:learning_rate` and `train_run`, validator and tests. No L-BFGS, adaptive weights, resampling, curriculum, early stopping, or best-checkpoint path. |
-| Numerical failure preserved, no scientific retry | `src/train.py` checks loss, gradients, parameters; writes failure step/reason and partial log. `scripts/run_frozen.py` treats `failed` as terminal. |
-| Infrastructure interruption distinct and recoverable | `scripts/run_frozen.py` writes `infrastructure_interrupted`, preserves attempt directory, requires explicit `--recover-infrastructure`, and refuses prior SHA/config mismatch. `docs/COLAB_EXECUTION.md` describes persistence and lost-storage limit. |
-| Overwrite safety | Exclusive `attempt_NNN` creation; completed/failed slots skipped and never overwritten. |
-| Every seed and per-seed raw evidence | Twelve deterministic run roots under `results/raw/`; each attempt has resolved config, `run.json` provenance/status, log, final state if successful, predictions and metrics after gate. |
-| Relative L2 primary; L∞, residual RMS, boundary RMSE secondary | `src/evaluate.py`, raw `metrics.json`, `results/processed/per_seed_results.csv`. |
-| Paired effects; percentage improvement; means/SD; failures visible | `scripts/aggregate_results.py`, `paired_effects.csv`, `summary.csv`, `per_seed_results.csv`, `run_manifest.csv`. No significance test. |
-| Training curves, error fields, seed comparison | `scripts/aggregate_results.py` creates figures only after condition-gated metrics are available. |
-| Compute, timing, parameters, hardware | `src/provenance.py`, per-attempt `run.json`, `results/processed/compute_record.csv`. |
-| Git SHA, clean status, Python/PyTorch/CUDA/GPU and hashes | `src/provenance.py`, `scripts/run_frozen.py`; protected run refuses dirty/uncommitted source, no SHA, no CUDA, or invalid hashes/config. |
-| Methods/results note; pending status; limitations | `scripts/aggregate_results.py` generates `report/methods_results.md`; absent evidence is labelled `PENDING PROTECTED RUN`. Per-seed and effect tables, seed variability, frozen hyperparameters, no independent sweep, no post-hoc tuning, negative results and restrained interpretation are explicit. |
-| Experiment log and citations | `EXPERIMENT_LOG.md`, `CITATIONS.md`; no reused code/data. |
-| Colab reproducibility and single command | `docs/COLAB_EXECUTION.md`; `python scripts/run_frozen.py --config configs/frozen.yaml`. No notebook scientific logic or machine-specific path. |
-| Visible progress and staged execution | `src/train.py` prints training-only progress every 100 updates. `scripts/run_frozen.py` selects only approved run slots, enforces both condition barriers and finalization completeness, preserves terminal attempts and revision checks; `colab/run_protected.ipynb` only launches repository scripts. |
-| Local required tests | `tests/test_protocol.py`, `scripts/validate_protocol.py`, `scripts/run_smoke.py`; test log/status recorded in final construction response. |
+The master checklist is mapped below. Technical completion does not imply approval of the disclosed additional-workload deviation.
 
-The protected phase is intentionally pending. Generated tables, plots, and report cannot contain official values until the reviewed commit is run on Colab.
+| Sections | Requirement | Evidence | Status |
+|---|---|---|---|
+| 1–2 | Task and approved Helmholtz problem | src/pde.py; configs/frozen.yaml; report sections 1–2 | Implemented; n=6 primary and n=12 stress retained |
+| 3–4 | Fixed collocation and boundary inputs | data/frozen; src/data.py; raw config/hash provenance | Verified reuse; 2,048 interior and 512 unique boundary points |
+| 5–6 | Held-out grid and normalized loss | src/evaluate.py; src/pde.py; run timestamps | 257×257 grid and condition gates verified |
+| 7–9 | Models, RFF and seeds | src/models.py; artifacts/rff; all raw weights | Counts 12,737 / 12,871; fixed B; every seed retained |
+| 10 | Protected workload | run_manifest.csv; EXPERIMENT_LOG.md | 12 submitted slots; earlier execution disclosed as an unapproved additional-workload deviation |
+| 11–13 | Compute, stopping and frozen settings | src/train.py; run.json; compute_record.csv | 8,000 updates; fixed settings; no retry within submitted cohort |
+| 14–16 | Metrics and paired descriptive effects | per_seed_results.csv; paired_effects.csv; summary.csv | All metrics, per-seed values, effects and sample SD retained |
+| 17 | Sensitivity scope | configs/frozen.yaml; report section 8 | Seed spread reported; no independent hyperparameter sweep |
+| 18–19 | Raw outputs and provenance | results/raw; submission/execution; original-file map | Raw data and scientific source SHA preserved |
+| 20–21 | Tables and visualizations | results/processed; figures | Five tables, 16 original figures and clearly labeled additional figures |
+| 22 | Methods/results note | report/methods_results.md and .pdf | Comprehensive methods, actual conclusions and restrained scope |
+| 23 | Experiment log | EXPERIMENT_LOG.md; original journal copy | Final hardware/completion/failures/decisions entry completed from evidence |
+| 24–25 | Attribution and resource use | CITATIONS.md; requirements.txt; runtime records | No external code/data copied or required private/paid service; account billing tier is not established by GPU metadata |
+| 26–27 | Compute sufficiency and structure | All run records; repository tree | Full workload retained; all required source/output paths present |
+| 28–29 | Reproduction and Colab | README.md; docs/COLAB_EXECUTION.md; exact CLI | Scientific SHA and source/launcher distinction explicit; actual Drive workflow disclosed |
+| 30 | Smoke separation | configs/smoke.yaml; scripts/run_smoke.py; tests | Smoke is non-protected and separate from reported evidence |
+| 31 | Delivery | README.md; report; submission overview; all results | Complete static technical submission with evidence and provenance |
+| 32 | Scientific integrity | Original-file map; checksums; experiment log | No changed results or post-hoc tuning; historical workload exception remains for reviewer disposition |
+
+All negative outcomes are retained. No new training, sweep or compensatory run was performed during submission preparation.

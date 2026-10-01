@@ -1,0 +1,10 @@
+{
+  "boundary_rmse": 0.002467766034837322,
+  "evaluated_at_utc": "2026-10-01T10:20:54.418201+00:00",
+  "evaluation_wall_seconds": 1.1279037389999758,
+  "grid_size": 257,
+  "label": "PROTECTED",
+  "linf": 1.0541990287601948,
+  "normalized_residual_rms": 0.49807045039582437,
+  "relative_l2": 1.001257881457636
+}
