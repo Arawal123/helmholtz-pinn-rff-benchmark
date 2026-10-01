@@ -10,6 +10,8 @@ No resampling, adaptive weighting, curriculum, early stopping, best checkpoint, 
 
 ## Review and reproduce
 
+For a new experiment from the beginning, use [colab/start_from_beginning.ipynb](colab/start_from_beginning.ipynb). Its SHA is filled in and its separate persistent Drive folder is `ryan_pinn_trial_from_start_0677b40`. It contains one cell per protected model, condition evaluations, progress logging, deliverable generation, and ZIP download. Earlier experiment outputs remain in their original folder; any user-requested restart is recorded in the new external journal.
+
 1. Inspect [the compliance map](docs/PROTOCOL_COMPLIANCE.md), [Colab steps](docs/COLAB_EXECUTION.md), [experiment log](EXPERIMENT_LOG.md), and [citations](CITATIONS.md).
 2. From the repository root run `python -m pip install -r requirements.txt`, `python scripts/validate_protocol.py`, `python -m pytest -q`, and optionally `python scripts/run_smoke.py`. Smoke output is explicitly non-evidence and outside `results/raw/`.
 3. Push a reviewed clean commit and freeze its exact SHA. Use an ordinary Colab GPU runtime and follow [docs/COLAB_EXECUTION.md](docs/COLAB_EXECUTION.md). The single official command is `python scripts/run_frozen.py --config configs/frozen.yaml`.
