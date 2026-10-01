@@ -16,6 +16,8 @@ No resampling, adaptive weighting, curriculum, early stopping, best checkpoint, 
 
 For one model per cell, open [colab/run_protected.ipynb](colab/run_protected.ipynb) and run its sequential stage cells. The corrected launcher defaults to the reviewed experiment SHA `0677b40869fabf50035075e240aea3b98a0c7e05`, preserves verified pretraining setup failures in an external archive, and refuses revision changes for actual or ambiguous training evidence. A newer launcher still checks out that same frozen experiment revision. The same runner exposes `--action train`, `evaluate`, `finalize`, and `status`. Training prints update counts, loss, elapsed time, and ETA every 100 updates. Every model retains its frozen budget; held-out evaluation still requires six terminal training runs for its condition. Completed and scientifically failed slots are skipped rather than retrained.
 
+If existing results are recorded at original SHA `3258b1d47baa734fea102d7f8ea38fdd626d8174`, use [the original experiment recovery notebook](colab/resume_original.ipynb). It retains that revision and adds an external training-log monitor to its original full pipeline command. Confirm the previous process has stopped before enabling explicit infrastructure recovery.
+
 `scripts/prepare_frozen_assets.py` documents one-time asset creation but refuses to replace the committed files. The official runner loads and verifies their SHA-256 hashes; it never regenerates them. `configs/frozen.yaml` and `scripts/validate_protocol.py` define and enforce the approved values. The runner requires a clean Git revision and CUDA, and captures SHA, config/asset hashes, software versions, and actual GPU model.
 
 ## Evidence layout

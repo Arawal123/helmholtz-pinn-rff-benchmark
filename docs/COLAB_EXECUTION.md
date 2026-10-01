@@ -54,6 +54,8 @@ Between cells, `python scripts/run_frozen.py --action status` shows all 12 train
 
 Freeze one SHA for the entire experiment. Existing protected attempts at another SHA cannot be combined with this revision. If training has already begun, continue at its original revision; preserve every attempt.
 
+For an existing experiment at original SHA `3258b1d47baa734fea102d7f8ea38fdd626d8174`, use `colab/resume_original.ipynb`. It keeps the original checkout and launches its supported full pipeline command, with an external read-only monitor of training CSVs. The original revision does not support the newer staged actions. Completed and scientifically failed slots remain skipped; explicit recovery preserves interrupted attempts and restarts only interrupted training from update 1. Its first cell defaults to recovery disabled. After confirming the old process has stopped in every runtime, set `RECOVER_INFRASTRUCTURE = True` to recover. The notebook checks local process liveness, retains logs, and packages all original evidence. A `running` status with `updates_completed=0` can be stale; the most recent logged CSV update is displayed instead. This monitor never opens held-out metrics or predictions.
+
 Check `results/processed/run_manifest.csv` for the 12 selected run slots and any older infrastructure attempts, and `results/processed/per_seed_results.csv` for every seed. Scientific failures are terminal and must not be rerun. If the runtime disconnects or crashes, retain the existing output directory. Restart from the **same clean commit**, restore the complete `results/raw/` tree (including interrupted attempts), validate, then explicitly invoke:
 
 ```bash
