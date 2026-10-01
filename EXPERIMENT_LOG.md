@@ -22,3 +22,9 @@ Before protected execution, append the reviewed Git SHA, reviewer, validation re
 ## Protected execution / interruptions / failures / observations / decisions / deviations
 
 Append dated entries with exact Git SHA, GPU, attempt path, event, evidence path, and decision. Preserve chronology. Never rewrite a failure into a successful story or alter frozen settings after seeing held-out metrics.
+
+## Execution interface update, 2026-10-01 (before protected execution)
+
+The user confirmed that no protected model had started and requested visible progress and separate runs. Added training-only console progress and runner actions for one approved slot per invocation, condition evaluation, finalization, and metadata-only status. Added a thin Colab launcher with one training cell per model. Frozen scientific configuration, assets, architectures, objective, optimizer, schedule, and step budget are unchanged. New attempts must all use the same reviewed updated Git SHA; existing attempts from another revision remain protected from reuse or overwrite. Local verification uses synthetic orchestration fixtures and tiny non-protected CPU smoke runs only.
+
+Verification of this update: 16 unit tests passed, frozen protocol/asset validation passed, Python static compilation passed, and the tiny CPU smoke pipeline passed with visible progress. Tests cover all 12 staged slots, evaluation/finalization barriers, failed/completed skip behavior, revision mismatch, explicit infrastructure recovery, metadata-only status, and unexecuted notebook cell syntax/order. No protected attempts exist in the local raw output tree.

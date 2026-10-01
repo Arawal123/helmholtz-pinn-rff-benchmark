@@ -79,6 +79,11 @@ def train_run(config: dict, n: int, method: str, seed: int, directory: Path, pro
                                  "residual_mse": parts["residual_mse"].item(),
                                  "boundary_mse": parts["boundary_mse"].item()})
                 handle.flush()
+                elapsed = time.perf_counter() - started
+                eta = elapsed * (updates - update) / update
+                print(f"[n={n} {method} seed={seed}] {update:4d}/{updates} "
+                      f"({100*update/updates:5.1f}%) loss={loss.item():.6g} lr={lr:.6g} "
+                      f"elapsed={elapsed/60:.1f}min ETA={eta/60:.1f}min", flush=True)
     if device.type == "cuda":
         torch.cuda.synchronize()
     status["wall_seconds_training"] = time.perf_counter() - started

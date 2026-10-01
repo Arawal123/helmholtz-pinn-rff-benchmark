@@ -1,7 +1,8 @@
-"""The sole official entrypoint; no scientific CLI overrides."""
+"""Protected orchestration: whole pipeline or individual frozen run slots."""
 from __future__ import annotations
 
 import argparse
+import csv
 import os
 os.environ["CUBLAS_WORKSPACE_CONFIG"] = ":4096:8"
 import json
@@ -51,15 +52,79 @@ def mark_interrupted(directory: Path, state: dict | None, reason: str) -> None:
     atomic_json_dump(directory / "run.json", record)
 
 
-def execute(config_path: str, recover_infrastructure: bool = False) -> None:
-    config = validate(config_path)
-    provenance = runtime_record(ROOT / config_path, config)
-    raw = ROOT / "results/raw"
-    # Condition barrier: no held-out data or metrics are touched during training.
+def require_condition_evaluated(n: int, provenance: dict) -> None:
+    slots = []
+    for method in ("vanilla", "rff"):
+        for seed in (0, 1, 2):
+            directory, state = latest_state(ROOT / f"results/raw/n{n:02d}/{method}/seed_{seed}")
+            if not terminal(state):
+                raise RuntimeError(f"Finish condition n={n} before proceeding: {method} seed={seed}")
+            if any(state.get("provenance", {}).get(key) != provenance[key] for key in
+                   ("git_sha", "config_sha256", "sobol_sha256", "rff_sha256")):
+                raise RuntimeError(f"Existing attempt requires its original revision/assets: {directory}")
+            slots.append((method, seed, directory, state))
+    for method, seed, directory, state in slots:
+        if state["status"] == "completed" and (
+                state.get("evaluation_status") != "completed" or not (directory / "metrics.json").exists()):
+            raise RuntimeError(f"Evaluate condition n={n} before proceeding: {method} seed={seed}")
+
+
+def print_status() -> None:
+    """Read training/status metadata only, without CUDA or held-out metrics."""
+    finished = 0
+    print("n   method   seed  status                       logged_update")
     for n in (6, 12):
-        condition = []
         for method in ("vanilla", "rff"):
             for seed in (0, 1, 2):
+                directory, state = latest_state(ROOT / f"results/raw/n{n:02d}/{method}/seed_{seed}")
+                status = state.get("status", "infrastructure_interrupted") if state else (
+                    "infrastructure_interrupted" if directory else "not_started")
+                update = state.get("updates_completed", 0) if state else 0
+                if directory and (directory / "training_log.csv").exists():
+                    with (directory / "training_log.csv").open(newline="", encoding="utf-8") as handle:
+                        for row in csv.DictReader(handle):
+                            if row.get("update", "").isdigit():
+                                update = max(update, int(row["update"]))
+                finished += terminal(state)
+                print(f"{n:<3} {method:<8} {seed:<5} {status:<28} {update}/8000")
+    print(f"Terminal training slots: {finished}/12")
+
+
+def execute(config_path: str, recover_infrastructure: bool = False, *, action: str = "all",
+            n: int | None = None, method: str | None = None, seed: int | None = None) -> None:
+    if action not in ("all", "train", "evaluate", "finalize", "status"):
+        raise ValueError("Unknown action")
+    if action == "train":
+        if n not in (6, 12) or method not in ("vanilla", "rff") or seed not in (0, 1, 2):
+            raise ValueError("train requires --n {6,12}, --method {vanilla,rff}, --seed {0,1,2}")
+    elif action == "evaluate":
+        if n not in (6, 12) or method is not None or seed is not None:
+            raise ValueError("evaluate requires only --n {6,12}")
+    elif any(value is not None for value in (n, method, seed)):
+        raise ValueError(f"{action} does not accept run selectors")
+    config = validate(config_path)
+    if action == "status":
+        print_status()
+        return
+    provenance = runtime_record(ROOT / config_path, config)
+    if action == "finalize":
+        for condition in (6, 12):
+            require_condition_evaluated(condition, provenance)
+        from scripts.aggregate_results import aggregate
+        aggregate(config, provenance)
+        print("All 12 protected run slots terminal; processed evidence generated.", flush=True)
+        return
+    if action in ("train", "evaluate") and n == 12:
+        require_condition_evaluated(6, provenance)
+    raw = ROOT / "results/raw"
+    conditions = (n,) if action in ("train", "evaluate") else (6, 12)
+    methods = (method,) if action == "train" else ("vanilla", "rff")
+    seeds = (seed,) if action == "train" else (0, 1, 2)
+    # Condition barrier: no held-out data or metrics are touched during training.
+    for n in conditions:
+        condition = []
+        for method in methods:
+            for seed in seeds:
                 run_root = raw / f"n{n:02d}" / method / f"seed_{seed}"
                 directory, state = latest_state(run_root)
                 if terminal(state):
@@ -68,7 +133,10 @@ def execute(config_path: str, recover_infrastructure: bool = False) -> None:
                            ("git_sha", "config_sha256", "sobol_sha256", "rff_sha256")):
                         raise RuntimeError(f"Existing protected run uses a different code/config revision: {directory}")
                     condition.append((method, seed, directory, state))
+                    print(f"SKIP n={n} {method} seed={seed}: already {state['status']}", flush=True)
                     continue
+                if action == "evaluate":
+                    raise RuntimeError(f"Condition n={n} is not terminal: {method} seed={seed}; evaluation/finalization blocked")
                 if directory is not None:
                     if not recover_infrastructure:
                         raise RuntimeError(f"Interrupted attempt requires explicit --recover-infrastructure: {directory}")
@@ -92,6 +160,9 @@ def execute(config_path: str, recover_infrastructure: bool = False) -> None:
                     mark_interrupted(directory, record, f"{type(error).__name__}: {error}\n{traceback.format_exc()}")
                     raise
                 condition.append((method, seed, directory, state))
+                print(f"TRAINING TERMINAL n={n} {method} seed={seed}: {state['status']}", flush=True)
+        if action == "train":
+            return
         if len(condition) != 6 or not all(terminal(state) for _, _, _, state in condition):
             raise RuntimeError(f"Condition n={n} has not reached six terminal training states")
         print(f"CONDITION GATE PASSED n={n}; starting held-out evaluation", flush=True)
@@ -106,6 +177,7 @@ def execute(config_path: str, recover_infrastructure: bool = False) -> None:
             if state.get("evaluation_status") == "infrastructure_interrupted" and not recover_infrastructure:
                 raise RuntimeError(f"Evaluation interruption requires explicit --recover-infrastructure: {directory}")
             try:
+                print(f"EVALUATE n={n} {method} seed={seed}", flush=True)
                 evaluate_run(config, n, method, directory)
                 state["evaluation_status"] = "completed"
             except FloatingPointError as error:
@@ -116,6 +188,11 @@ def execute(config_path: str, recover_infrastructure: bool = False) -> None:
                 atomic_json_dump(directory / "run.json", state)
                 raise
             atomic_json_dump(directory / "run.json", state)
+        print(f"CONDITION EVALUATION COMPLETE n={n}", flush=True)
+    if action == "evaluate":
+        return
+    for n in (6, 12):
+        require_condition_evaluated(n, provenance)
     from scripts.aggregate_results import aggregate
     aggregate(config, provenance)
     print("All 12 protected run slots terminal; processed evidence generated.", flush=True)
@@ -124,7 +201,15 @@ def execute(config_path: str, recover_infrastructure: bool = False) -> None:
 if __name__ == "__main__":
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--config", default="configs/frozen.yaml", choices=["configs/frozen.yaml"])
+    parser.add_argument("--action", default="all", choices=["all", "train", "evaluate", "finalize", "status"])
+    parser.add_argument("--n", type=int, choices=[6, 12])
+    parser.add_argument("--method", choices=["vanilla", "rff"])
+    parser.add_argument("--seed", type=int, choices=[0, 1, 2])
     parser.add_argument("--recover-infrastructure", action="store_true",
                         help="Explicitly re-execute only infrastructure-interrupted attempts from the same frozen Git/config revision")
     args = parser.parse_args()
-    execute(args.config, args.recover_infrastructure)
+    try:
+        execute(args.config, args.recover_infrastructure, action=args.action,
+                n=args.n, method=args.method, seed=args.seed)
+    except ValueError as error:
+        parser.error(str(error))

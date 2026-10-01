@@ -2,7 +2,7 @@
 
 | Requirement | Implementation / evidence |
 |---|---|
-| Phase separation; no protected construction runs | `scripts/run_frozen.py` is the only protected entrypoint; `scripts/run_smoke.py` uses `configs/smoke.yaml`, CPU, and ignored `smoke_outputs/`. Official `results/raw/` is empty until Colab execution. |
+| Phase separation; no protected construction runs | `scripts/run_frozen.py` is the only protected entrypoint, with full-pipeline and staged actions; `scripts/run_smoke.py` uses `configs/smoke.yaml`, CPU, and ignored `smoke_outputs/`. Official `results/raw/` is empty until Colab execution. |
 | Source precedence, no post-hoc changes | `configs/frozen.yaml` specifies approved values; `scripts/validate_protocol.py` asserts them exactly before the runner starts. `EXPERIMENT_LOG.md` records chronology and deviations. |
 | PDE, domain, k, exact solution, forcing | `src/pde.py`; checks in `tests/test_protocol.py`. |
 | n=6 primary; n=12 preregistered stress | `configs/frozen.yaml`, fixed order and labels in `scripts/run_frozen.py`, all tables and report. |
@@ -25,6 +25,7 @@
 | Methods/results note; pending status; limitations | `scripts/aggregate_results.py` generates `report/methods_results.md`; absent evidence is labelled `PENDING PROTECTED RUN`. Per-seed and effect tables, seed variability, frozen hyperparameters, no independent sweep, no post-hoc tuning, negative results and restrained interpretation are explicit. |
 | Experiment log and citations | `EXPERIMENT_LOG.md`, `CITATIONS.md`; no reused code/data. |
 | Colab reproducibility and single command | `docs/COLAB_EXECUTION.md`; `python scripts/run_frozen.py --config configs/frozen.yaml`. No notebook scientific logic or machine-specific path. |
+| Visible progress and staged execution | `src/train.py` prints training-only progress every 100 updates. `scripts/run_frozen.py` selects only approved run slots, enforces both condition barriers and finalization completeness, preserves terminal attempts and revision checks; `colab/run_protected.ipynb` only launches repository scripts. |
 | Local required tests | `tests/test_protocol.py`, `scripts/validate_protocol.py`, `scripts/run_smoke.py`; test log/status recorded in final construction response. |
 
 The protected phase is intentionally pending. Generated tables, plots, and report cannot contain official values until the reviewed commit is run on Colab.
