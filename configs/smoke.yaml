@@ -1,0 +1,12 @@
+label: SMOKE / NON-PROTECTED / NOT RESEARCH EVIDENCE
+seed: 99173
+n: 2
+k: 3.0
+interior_points: 24
+boundary_points_per_side: 8
+grid_size: 17
+updates: 3
+initial_lr: 0.001
+final_lr: 0.0001
+output_root: smoke_outputs
+

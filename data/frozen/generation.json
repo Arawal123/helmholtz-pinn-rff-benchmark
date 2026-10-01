@@ -1,0 +1,17 @@
+{
+  "sobol": "torch.quasirandom.SobolEngine(dimension=2, scramble=True, seed=seed).draw(2048); float32 map 2*x-1",
+  "sobol_seeds": [
+    0,
+    1,
+    2
+  ],
+  "torch_version": "2.12.0+cpu",
+  "rff": "torch.Generator(device='cpu').manual_seed(2026); float32 3*torch.randn((32,2), generator=g)",
+  "rff_seed": 2026,
+  "asset_hashes": {
+    "0": "f5fc079758da5519dbbfc48084a7f85de8db052a05c64ef250f76bffb4665c48",
+    "1": "e7332b2a7bb1da1cf6e78ab82ebae5990938322016388d8894bd7d1f2ec43c56",
+    "2": "9ddf3c59bd5ae415262906a8868540782908fdc88d1b0501684bd84ff78eee7b"
+  },
+  "rff_sha256": "76130b8c82524338e339d86ec525d3476ffcd3ea889ca93dc7db51c578d2ed63"
+}

@@ -1,0 +1,7 @@
+# Attribution and contribution
+
+- M. Raissi, P. Perdikaris, and G. E. Karniadakis, “Physics-informed neural networks: A deep learning framework for solving forward and inverse problems involving nonlinear partial differential equations,” *Journal of Computational Physics* 378 (2019), 686–707. [DOI: 10.1016/j.jcp.2018.10.045](https://doi.org/10.1016/j.jcp.2018.10.045). Methodological background for PDE-residual neural training.
+- M. Tancik et al., “Fourier Features Let Networks Learn High Frequency Functions in Low Dimensional Domains,” *NeurIPS 33* (2020). [Proceedings](https://papers.neurips.cc/paper_files/paper/2020/hash/55053683268957697aa39fba6f231c68-Abstract.html). Motivation for frequency-aware input representation; our exact RFF dimensions/bandwidth are from the frozen trial protocol.
+- [PyTorch SobolEngine documentation](https://docs.pytorch.org/docs/stable/generated/torch.quasirandom.SobolEngine.html). API used to create the committed scrambled Sobol point sets. The exact files, not cross-version regeneration, are the protected source of truth.
+
+No external code or data was copied into this repository. This implementation's contribution is the specifically frozen, paired, auditable comparison; the manufactured PDE, training choices, and scientific hypothesis come from the approved Ryan trial protocol. The implementation includes committed frozen inputs, condition-gated evaluation, failure-preserving attempts, provenance, and automated reviewer evidence.
